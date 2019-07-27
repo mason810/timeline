@@ -5926,8 +5926,10 @@ TL.DateUtil = {
 	sortByDate: function(array,prop_name) { // only for use with slide data objects
 		var prop_name = prop_name || 'start_date';
 		array.sort(function(a,b){
-			if (a[prop_name].isBefore(b[prop_name])) return -1;
-			if (a[prop_name].isAfter(b[prop_name])) return 1;
+			// if (a[prop_name].isBefore(b[prop_name])) return -1;
+			// if (a[prop_name].isAfter(b[prop_name])) return 1;
+			if (a[prop_name].isBefore(b[prop_name])) return 1;
+			if (a[prop_name].isAfter(b[prop_name])) return -1;
 			return 0;
 		});
 	},
