@@ -19,6 +19,7 @@ $(document).ready(function () {
 			timeline = new TL.Timeline('timeline', input);
 		}
 		$.modal.close();
+		document.title = 'Your Timeline';
 	});
 	$("#closeModalBtn").on('click', function () {
 		if ($.modal.isActive()) {
@@ -43,10 +44,12 @@ $(document).ready(function () {
 				if ($.modal.isActive()) {
 					$.modal.close();
 				}
+				document.title = 'Your Timeline - Mai Thị Cẩm Cát';
 			},
 			error: function (jqXHR, textStatus, errorThrown) {
 				console.log(textStatus, errorThrown);
 				console.log(jqXHR);
+				document.title = 'Your Timeline';
 			},
 			// complete: function(jqXHR, textStatus) {
 			// 	console.log(textStatus, jqXHR);
