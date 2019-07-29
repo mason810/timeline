@@ -9,7 +9,8 @@ $(document).ready(function () {
 	}
 	var timeline = new TL.Timeline('timeline', myTimelineURL, additionalOptions);
 
-	showGenerateModal();
+	// showGenerateModal();
+	specialImport();
 
 	$("#generateBtn").on('click', function () {
 		var input = $('#spreadsheetURL').val();
@@ -32,6 +33,10 @@ $(document).ready(function () {
 
 	$("#cardImport").on('click', function (event) {
 		event.preventDefault();
+		specialImport();
+	});
+
+	function specialImport() {
 		console.log('special import');
 		// updated data: 27-07-1029
 		const dataSourceURL = 'assets/datasource/mtcc_tl.json';
@@ -55,7 +60,7 @@ $(document).ready(function () {
 			// 	console.log(textStatus, jqXHR);
 			// }
 		});
-	});
+	}
 
 	function showGenerateModal() {
 		if (!$.modal.isActive()) {
