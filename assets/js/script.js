@@ -17,7 +17,9 @@ $(document).ready(function () {
 		// console.log(input);
 		if (!$.isEmptyObject(input)) {
 			input = input.trim();
-			timeline = new TL.Timeline('timeline', input);
+			var sortNewest = $('#sortNewest').val() == 'on';
+			additionalOptions.start_at_end = sortNewest;
+			timeline = new TL.Timeline('timeline', input, additionalOptions);
 		}
 		$.modal.close();
 		document.title = 'Your Timeline';
@@ -45,7 +47,24 @@ $(document).ready(function () {
 			success: function (data, textStatus, jqXHR) {
 				// console.log(textStatus, jqXHR);
 				// console.log(data);
-				timeline = new TL.Timeline('timeline', data, additionalOptions);
+				var specialData = {
+					"title": {
+						"media": {
+							"url": "https://scontent.fdad5-1.fna.fbcdn.net/v/t1.0-9/51278337_725271027859359_6675724675273719808_n.jpg?_nc_cat=108&_nc_oc=AQnHL6HeFk_6_dP5fvCTPQu17tCRcEcnRNi0yEJUOstIU_BNgZv-qLJHMnC6kPpv-N0&_nc_ht=scontent.fdad5-1.fna&oh=5facb74e946212f3b4c86c4378b96696&oe=5DE440AD",
+							"caption": "Mai Thị Cẩm Cát"
+						},
+						"text": {
+							"headline": "Mai Thị Cẩm Cát",
+							"text": ""
+						}
+					},
+					"events": []
+				};
+				specialData.events = data;
+				var sortNewest = $('#sortNewest').val() == 'on';
+				additionalOptions.start_at_end = sortNewest;
+
+				timeline = new TL.Timeline('timeline', specialData, additionalOptions);
 				if ($.modal.isActive()) {
 					$.modal.close();
 				}
